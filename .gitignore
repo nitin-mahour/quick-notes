@@ -31,5 +31,5 @@ yarn-error.log*
 /src/firebase/firebaseConfig.js
 
 # these tailwindcss files need to be created for each project seperately
-/src/css/tailwindcss.dev.css
-/src/css/tailwindcss.css
+/src/css/tailwind.dev.css
+/src/css/tailwind.css
