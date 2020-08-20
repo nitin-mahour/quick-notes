@@ -35,7 +35,7 @@ class EditNoteModal extends Component {
                 body: this.state.body,
                 time: new Date()
             })
-           
+            
             this.props.fetchNotes()
             this.props.toggleHandle(false)
         }

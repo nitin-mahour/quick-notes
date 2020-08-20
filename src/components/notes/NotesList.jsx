@@ -6,16 +6,18 @@ import EditNoteModal from './EditNoteModal'
 import DelelteNotePopup from './DelelteNotePopup'
 import { delNote, fetchNotes } from '../../firebase/actions/dbActions'
 import Preloader from '../layouts/Preloader'
+import { logInWithGoogleEnd } from '../../firebase/actions/authActions'
 
 class NotesList extends Component {
 
     componentDidMount() {
+        this.props.finishGoogleSignUP()   // if user sign up using google
         this.props.fetchNotes()
     }
 
     state = {
         toggle: false,  // for toggling EDIT NOTE MODAL
-        popup: false,   // for toggling DELETE CONFIRMATION POPUP
+        popup: false,   // for toggling DELETE NOTE CONFIRMATION POPUP
     }
 
     toggleHandle = (toggle) => {
@@ -34,7 +36,7 @@ class NotesList extends Component {
 
     render() {
         return (
-            <div className="my-24 min-h-screen mx-auto flex flex-col md:flex-wrap md:w-10/12 md:flex-row gap-4">
+            <div className="my-24 self-start mx-auto flex flex-col md:flex-wrap md:w-10/12 md:flex-row gap-4">
                 {
                     this.props.notes === null
                         ? <Preloader />
@@ -44,7 +46,9 @@ class NotesList extends Component {
                 }
 
                 <AddNoteModal />
-                <DelelteNotePopup delNote={this.props.delNote} popup={this.state.popup} popupHandle={this.popupHandle} fetchNotes={this.props.fetchNotes} />
+                {
+                    this.state.popup && <DelelteNotePopup delNote={this.props.delNote} popup={this.state.popup} popupHandle={this.popupHandle} fetchNotes={this.props.fetchNotes} />
+                }
                 {
                     this.state.toggle && <EditNoteModal toggle={this.state.toggle} toggleHandle={this.toggleHandle} />
                 }
@@ -53,11 +57,15 @@ class NotesList extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({ notes: state.db.notes })
+const mapStateToProps = (state) => ({ 
+    notes: state.db.notes,
+    googleInit: state.auth.googleInit   
+ })
 
 const mapDispatchToProps = (dispatch) => ({
     delNote: (id) => dispatch(delNote(id)),
-    fetchNotes: () => dispatch(fetchNotes())
+    fetchNotes: () => dispatch(fetchNotes()),
+    finishGoogleSignUP: () => dispatch(logInWithGoogleEnd())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotesList)
