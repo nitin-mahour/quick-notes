@@ -7,4 +7,4 @@ module.exports = {
     
 }
 
-// usage: npx purgecss -c tailwind.config.js  &&  css o -i src/css/tailwind.css -o src/css/tailwind.min.css
+// usage: npx purgecss -c purgecss.config.js  &&  npx csso -i src/css/tailwind.css -o src/css/tailwind.min.css
