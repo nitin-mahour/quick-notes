@@ -10,6 +10,7 @@ Css Framework: [TailwindCss](https://https://tailwindcss.com/)<br/>
 State Container: [Redux](https://react-redux.js.org)<br/>
 NoSQL Database: [Firebase Firestore](https://firebase.google.com/)<br/>
 
+<br/><br/>
 
 ## Note:
 ### 1
@@ -36,11 +37,11 @@ export default firebase`
 
 You can get these values from you firebase console under project settings.
 
-<br/><br/>
+<br/>
 
 ### 2
 By default tailwindcss creates very large css files, so, to minimize the css file size run:
 
-`npx tailwindcss build tailwind.config.css -o src/css/tailwind.dev.css <br/>
-npx purgecss -c purgecss.config.js <br/>
-npx csso -i src/css/tailwind.css -o src/css/tailwind.min.css`
+`npx tailwindcss build tailwind.config.css -o src/css/tailwind.dev.css`
+`npx purgecss -c purgecss.config.js`
+`npx csso -i src/css/tailwind.css -o src/css/tailwind.min.css`
