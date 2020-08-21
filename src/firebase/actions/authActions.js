@@ -75,7 +75,6 @@ export const logInWithGoogleEnd = () => (dispatch, getState, { getFirebase, getF
     firebase.auth().getRedirectResult()
         .then(resp => {
             if (resp.user.metadata.creationTime === resp.user.metadata.lastSignInTime) {        // to check if new user
-                console.log('XXX');
                 return firestore.collection('users').doc(resp.user.email).set({
                     name: resp.user.displayName,
                     uid: resp.user.uid,
