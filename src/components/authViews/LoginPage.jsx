@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { logIn, logInWithGoogleStart } from '../../firebase/actions/authActions'
-import { PreloaderSmall } from './Preloader'
+import { PreloaderSmall } from '../extras/Preloader'
 import { Link } from 'react-router-dom'
 
 class LoginPage extends Component {
@@ -42,7 +42,7 @@ class LoginPage extends Component {
                             </span>
                             <input type="password" name="password" placeholder="Password" onChange={this.handleChange} className="w-5/6 appearance-none bg-transparent border-b-2 border-gray-400 focus:border-indigo-600 text-gray-700 text-lg py-2 focus:outline-none mb-4 placeholder-gray-400" required />
                         </div>
-                        <div className="flex justify-center mt-4">
+                        <div className="flex justify-center mt-2">
                             <button type="submit" className="bg-indigo-700 w-32 py-2 text-white focus:outline-none rounded-full transform hover:scale-110 duration-500 flex justify-center">
                                 {
                                     this.props.loading

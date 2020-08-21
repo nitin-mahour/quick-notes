@@ -5,7 +5,7 @@ import AddNoteModal from './AddNoteModal'
 import EditNoteModal from './EditNoteModal'
 import DelelteNotePopup from './DelelteNotePopup'
 import { delNote, fetchNotes } from '../../firebase/actions/dbActions'
-import Preloader from '../layouts/Preloader'
+import Preloader from '../extras/Preloader'
 import { logInWithGoogleEnd } from '../../firebase/actions/authActions'
 
 class NotesList extends Component {

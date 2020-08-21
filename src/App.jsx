@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Header from './components/layouts/Header'
-import LoginPage from './components/layouts/LoginPage'
+import Header from './components/header/Header'
+import LoginPage from './components/authViews/LoginPage'
 import NotesList from './components/notes/NotesList'
-import Preloader from './components/layouts/Preloader'
-import SignUpPage from './components/layouts/SignUpPage'
+import Preloader from './components/extras/Preloader'
+import SignUpPage from './components/authViews/SignUpPage'
 
 const App = ({ auth }) => {
 	return (

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { logOut } from '../../firebase/actions/authActions'
 import { Link } from 'react-router-dom'
-import About from './About'
-import AccountInfo from './AccountInfo'
+import About from '../extras/About'
+import AccountInfo from '../extras/AccountInfo'
 
 class Header extends Component {
 
