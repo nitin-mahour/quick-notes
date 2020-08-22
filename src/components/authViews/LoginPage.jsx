@@ -61,7 +61,7 @@ class LoginPage extends Component {
                     <div className="flex justify-center mt-4">
                         <button onClick={this.props.withGoogle} className="py-2 px-5 text-gray-600 border-gray-500 border-2 focus:outline-none rounded-full transform hover:scale-110 duration-500 flex justify-center">
                             {
-                                this.props.loading
+                                this.props.loading_google
                                     ? (
                                         <PreloaderSmall />
                                     ) : (
@@ -98,13 +98,13 @@ class LoginPage extends Component {
 
 const mapStateToProps = (state) => ({
     authError: state.auth.authError,
-    loading: state.auth.loading
+    loading: state.auth.loading,
+    loading_google: state.auth.loading_google
 })
 
 const mapDispatchToProps = (dispatch) => ({
     login: (creds) => dispatch(logIn(creds)),
     withGoogle: () => dispatch(logInWithGoogleStart())
 })
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)

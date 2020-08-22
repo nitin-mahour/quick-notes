@@ -25,7 +25,7 @@ export const logOut = () => (dispatch, getState, { getFirebase }) => {
     })
 }
 
-// for signing in users
+// for signing up users
 export const addUser = (creds) => (dispatch, getState, { getFirebase, getFirestore }) => {
 
     dispatch({ type: 'LOGIN_INIT' })
@@ -37,6 +37,7 @@ export const addUser = (creds) => (dispatch, getState, { getFirebase, getFiresto
         creds.email,
         creds.password
     ).then(resp => {
+        // creating user object in firestore
         return firestore.collection('users').doc(creds.email).set({
             name: creds.name,
             uid: resp.user.uid,
@@ -53,11 +54,10 @@ export const addUser = (creds) => (dispatch, getState, { getFirebase, getFiresto
 export const logInWithGoogleStart = () => (dispatch, getState, { getFirebase }) => {
 
     const firebase = getFirebase()
-    // const firestore = getFirestore()
 
     const provider = new firebase.auth.GoogleAuthProvider()
 
-    dispatch({ type: 'LOGIN_INIT' })
+    dispatch({ type: 'GOOGLE_INIT' })
 
     firebase.auth().signInWithRedirect(
         provider
@@ -74,7 +74,7 @@ export const logInWithGoogleEnd = () => (dispatch, getState, { getFirebase, getF
 
     firebase.auth().getRedirectResult()
         .then(resp => {
-            if (resp.user.metadata.creationTime === resp.user.metadata.lastSignInTime) {        // to check if new user
+            if (resp.user.metadata.creationTime === resp.user.metadata.lastSignInTime) {        // to check if user in new
                 console.log('XXX');
                 return firestore.collection('users').doc(resp.user.email).set({
                     name: resp.user.displayName,
